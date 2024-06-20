@@ -15,6 +15,9 @@ body {
     padding: 30px;
     text-align: center;
     color: #333;
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
 }
 
 .stopwatch-name {
@@ -72,4 +75,53 @@ button:active {
 .laps li:hover {
     background-color: #e0e0e0;
     transform: scale(1.02);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .stopwatch {
+        padding: 20px;
+    }
+
+    .stopwatch-name {
+        font-size: 1.5em;
+    }
+
+    .display {
+        font-size: 3.5em;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    .laps li {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .stopwatch {
+        padding: 15px;
+    }
+
+    .stopwatch-name {
+        font-size: 1.3em;
+    }
+
+    .display {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+
+    button {
+        padding: 8px 16px;
+        font-size: 14px;
+        margin: 6px;
+    }
+
+    .laps li {
+        padding: 8px;
+    }
 }
