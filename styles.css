@@ -1,0 +1,75 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.stopwatch {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+    color: #333;
+}
+
+.stopwatch-name {
+    color: #333;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.display {
+    font-size: 5em;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 8px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:active {
+    background-color: #3e8e41;
+}
+
+.laps {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+    margin-top: 20px;
+}
+
+.laps li {
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.laps li:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.02);
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="stopwatch">
+        <h1 class="stopwatch-name">Digital Stopwatch</h1>
+        <div class="display">00:00:00:000</div> <!-- Updated display to include milliseconds -->
+        <button class="start">Start</button>
+        <button class="pause">Pause</button>
+        <button class="reset">Reset</button>
+        <button class="lap">Lap</button>
+        <ul class="laps"></ul>
+    </div>
+
+    <script>
+        let timer;
+        let isRunning = false;
+        let startTime;
+        let elapsedTime = 0;
+        const display = document.querySelector('.display');
+        const lapsList = document.querySelector('.laps');
+
+        function formatTime(time) {
+            const pad = (val) => val.toString().padStart(2, '0');
+            const hours = pad(Math.floor(time / 3600000));
+            const minutes = pad(Math.floor((time % 3600000) / 60000));
+            const seconds = pad(Math.floor((time % 60000) / 1000));
+            const milliseconds = pad(Math.floor(time % 1000));
+            return `${hours}:${minutes}:${seconds}:${milliseconds}`;
+        }
+
+        function showTime() {
+            const currentTime = new Date().getTime();
+            elapsedTime = currentTime - startTime;
+            display.textContent = formatTime(elapsedTime);
+        }
+
+        function startTimer() {
+            if (!isRunning) {
+                isRunning = true;
+                startTime = new Date().getTime() - elapsedTime;
+                timer = setInterval(showTime, 10); // Updated interval duration to 10 milliseconds
+            }
+        }
+
+        function pauseTimer() {
+            if (isRunning) {
+                isRunning = false;
+                clearInterval(timer);
+            }
+        }
+
+        function resetTimer() {
+            isRunning = false;
+            clearInterval(timer);
+            elapsedTime = 0;
+            display.textContent = formatTime(elapsedTime);
+            lapsList.innerHTML = '';
+        }
+
+        function lapTime() {
+            if (isRunning) {
+                const lapNumber = lapsList.children.length + 1;
+                const lapTime = formatTime(elapsedTime);
+                const lapItem = document.createElement('li');
+                lapItem.textContent = `Lap ${lapNumber}: ${lapTime}`;
+                lapsList.appendChild(lapItem); // Changed from prepend to appendChild
+            }
+        }
+
+
+        document.querySelector('.start').addEventListener('click', startTimer);
+        document.querySelector('.pause').addEventListener('click', pauseTimer);
+        document.querySelector('.reset').addEventListener('click', resetTimer);
+        document.querySelector('.lap').addEventListener('click', lapTime);
+
+    </script>
+</body>
+
+</html>
